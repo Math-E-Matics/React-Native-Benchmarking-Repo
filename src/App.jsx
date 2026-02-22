@@ -4,23 +4,36 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { useEffect } from 'react'
 
+
+//Case: Tagging a <div> element with a unique identifier ex. <div id=div0> <div id=div1> will consistiently reduce memory consumption and time to consume x bytes of memory
+
 function App() {
   const [count, setCount] = useState(0)
   const divs = []
 
 for(let t = 0; t < 1000; t++){
+  //here is where the unique id labeling is happening - we produce a thousand counters automatically and syncronously incrementing every 10 ms. 
+  //if you were to take out the unique id labeling, memory consumption would increase
   divs.push(<button id={t.toString()} onClick={() => setCount((count))}>
   count is {count}
 </button>)
 }
 
 useEffect(() => {
+
+  // Check if the count has reached the target
+  if (count >= 1000) {
+    return;
+  }
+
   // Set up the interval
   const intervalId = setInterval(() => {
-    // Use the functional update form
-    setCount(count => count + 1);
+      // Use the functional update form
+
+      setCount((count) => count + 1);
   }, 10); // 1000 milliseconds = 1 second
 
+  console.log("Finished.")
   // Clean up the interval when the component unmounts or the effect re-runs
   return () => clearInterval(intervalId);
 }); // Empty dependency array means the effect runs once on mount
@@ -51,5 +64,7 @@ useEffect(() => {
     </>
   )
 }
+
+
 
 export default App

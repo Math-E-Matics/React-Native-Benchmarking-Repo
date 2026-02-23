@@ -39,7 +39,7 @@ I saved on average roughly 10s of time by simply labeling the div elements with 
 
 Code Snippet: 
 
-'''
+```
   const [count, setCount] = useState(0)
   const divs = []
 
@@ -49,4 +49,4 @@ for(let t = 0; t < 1000; t++){
   divs.push(<button id={t.toString()} onClick={() => setCount((count))}>
   count is {count}
 </button>)
-'''
+```

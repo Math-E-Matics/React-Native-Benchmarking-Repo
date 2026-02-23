@@ -37,4 +37,16 @@ Time to reach threshold:
 
 I saved on average roughly 10s of time by simply labeling the div elements with unique identifiers
 
+Code Snippet: 
 
+'''
+  const [count, setCount] = useState(0)
+  const divs = []
+
+for(let t = 0; t < 1000; t++){
+  //here is where the unique id labeling is happening - we produce a thousand counters automatically and syncronously incrementing every 10 ms. 
+  //if you were to take out the unique id labeling, memory consumption would increase
+  divs.push(<button id={t.toString()} onClick={() => setCount((count))}>
+  count is {count}
+</button>)
+'''
